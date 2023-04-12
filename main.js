@@ -11,7 +11,37 @@
 //리터럴
 // /표현/옵션
 // /[a-z]/gi
+// regexp.test(str)  - true/false
+// str.match(regexp)
+// str.replace(regexp, 대체문자) 
+// g - 모든 문자 일치
+// i - 영어 대소문자를 구분 않고 일치(Ignore Case)
+// m - 여러 줄 일치, 각각의 줄을 시작과 끝으로 인식
 
+// ^ab ; 줄 시작에 있는 ab와 일치
+// ab$ ; 줄 끝에 있는 ab와 일치
+// .   ; 임의의 한 문자와 일치
+// a|b ; a or b 와 일치
+
+// {3} ; 3개 연속 일치
+// {3, }; 3개 이상 연속 일치
+// {3,5}; 3개 이상 5이하 연속 일치
+// +    ; 1회이상 연속 일치, {1, }
+
+// [ab] ; a or b
+// [a-z] ; a 부터 z 사이의 문자 구간에 일치(영어 소문자)
+// [A-Z]
+// [0-9]
+// [가-힣]
+
+// \w  ; 63개 문자에 일치
+// \b  ; 63개 문자에 일치하지 않는 문자 경계
+// \d  ; 숫자에 일치
+// \s  ; 공백에 일치
+
+// (?:) ; 그룹 지정
+// (?=) ; 앞쪽 일치
+// (?<=) ; 뒤쪽 일치
 
 const str = `
 010-1234-5678
@@ -25,8 +55,23 @@ http://localhost:1234
 abbcccddddeeeee
 `
 
-const regexp = new RegExp('the', '')
-console.log(str.match(regexp));
+
+console.log(str.match(/^h.../gm))
+console.log(str.match(/\.com/g))
+console.log(str.match(/\.com$/gm))
+console.log(str.match(/...\.com$/gm))
+// const regexp = new RegExp('the', 'gi')
+// const regexp = /cat/gi
+// console.log(regexp.test(str))
+// console.log(str.match(regexp));
+// console.log(str.replace(regexp, 'fox'))
+
+// console.log(str.match(/the/))
+// console.log(str.match(/the/g))
+// console.log(str.match(/the/gi))
+// console.log(str.match(/\.$/gi))
+// console.log(str.match(/\.$/gim)) // 줄 바꿈을 문자의 시작/끝으로 인식 시켜줌.
+// console.log(str.match(/\./gi))
 
 
 // 메모리 누수(Memory Leak) :  더 이상 필요하지 않으 데이터가 해제되지 못하고 메모리를 차지 하는 현상.
